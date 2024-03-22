@@ -1,19 +1,19 @@
-Le mot de passe de tout les utilisateurs est : **passpass**
+Le mot de passe de tous les utilisateurs est : **passpass**
 
 ----------------------------------------------------------
 
-Methode pour lister les chantiers : **/chantier/list**
+Méthode pour lister les chantiers : **/chantier/list**
 
-Methode pour connaitre le temps total d'un chantier : **/chantier/temps/{id}**
+Méthode pour connaitre le temps total d'un chantier : **/chantier/temps/{id}**
 
-Methode pour lister les opérations qu'un employé doit réaliser : **/operation/list**
+Méthode pour lister les opérations qu'un employé doit réaliser : **/operation/list**
 
-Il est possible de lister tout les chantiers en tant qu'admin avec : **/admin/chantier/list**
+Il est possible de lister tous les chantiers en tant qu'admin avec : **/admin/chantier/list**
 De même avec les opérations : **/admin/operation/list**
 
 ----------------------------------------------------------
-La gestion des rôle et des utilisateurs est reservé aux admins. Les ouvrier peuvent quand même lister les utilisateurs.
+La gestion des rôles et des utilisateurs est réservée aux admins. Les ouvriers peuvent quand même lister les utilisateurs.
 
-L'entièreté des routes reservé aux admins commencent par **/admin/**
+L'entièreté des routes réservées aux admins commence par **/admin/**
 
-Les routes de gestions (delete, put, post) sont reservé aux admins.
+Les routes de gestions (delete, put, post) sont réservé aux admins.
