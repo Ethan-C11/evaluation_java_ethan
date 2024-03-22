@@ -31,10 +31,10 @@ Route pour créer un utilisateur : **/sign-in**
 Route pour se connecter : **/login**
 
 ----------------------------------------------------------
-Voici les attributs du body pour la création d'un utilisateur
+Voici les attributs du body pour la création et connexion d'un utilisateur
 - pseudo
 - motDePasse
-- role
+- role *(non nécessaire pour connexion)*
 
 ----------------------------------------------------------
 De même pour les roles :
