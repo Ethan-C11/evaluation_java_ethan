@@ -23,3 +23,20 @@ La gestion des rôles et des utilisateurs est réservée aux admins. Les ouvrier
 L'entièreté des routes réservées aux admins commence par **/admin/**
 
 Les routes de gestions (delete, put, post) sont réservé aux admins.
+
+----------------------------------------------------------
+
+Route pour créer un utilisateur : **/sign-in**
+
+Route pour se connecter : **/login**
+
+----------------------------------------------------------
+Voici les attributs du body pour la création d'un utilisateur
+- pseudo
+- motDePasse
+- role
+
+----------------------------------------------------------
+De même pour les roles :
+- nom
+- admin *(booléen)*
