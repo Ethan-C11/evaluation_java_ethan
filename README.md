@@ -1,4 +1,4 @@
-Le mot de passe de tout les utilisateur est : **passpass**
+Le mot de passe de tout les utilisateurs est : **passpass**
 
 ----------------------------------------------------------
 
