@@ -3,9 +3,11 @@ package evaluation.ec.eval.models;
 import com.fasterxml.jackson.annotation.JsonView;
 import evaluation.ec.eval.models.Utilisateur;
 import evaluation.ec.eval.views.ChantierView;
+import evaluation.ec.eval.views.OperationView;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
 
 import java.util.List;
 
@@ -15,10 +17,11 @@ import java.util.List;
 public class Chantier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonView(ChantierView.class)
+    @JsonView({ChantierView.class, OperationView.class})
     protected Integer id;
 
-    @JsonView(ChantierView.class)
+    @Length(min= 3, max = 50, message = "Le nom doit avoir entre 3 et 50 caractères")
+    @JsonView({ChantierView.class, OperationView.class})
     @NotNull(message = "Le nom est obligatoire")
     protected String nom;
 
@@ -37,5 +40,6 @@ public class Chantier {
     protected Utilisateur directeur;
 
     @OneToMany
+    @JsonView(ChantierView.class)
     protected List<Operation> operations;
 }

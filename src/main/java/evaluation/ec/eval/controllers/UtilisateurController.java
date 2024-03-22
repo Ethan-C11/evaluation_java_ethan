@@ -1,12 +1,16 @@
 package evaluation.ec.eval.controllers;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import evaluation.ec.eval.dao.UtilisateurDao;
 import evaluation.ec.eval.models.Utilisateur;
 import evaluation.ec.eval.security.JwtUtils;
+import evaluation.ec.eval.views.ChantierView;
+import evaluation.ec.eval.views.UtilisateurView;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -58,18 +62,23 @@ public class UtilisateurController {
     }
 
     @GetMapping("/utilisateur/list")
+    @Secured({"ROLE_ADMIN", "ROLE_OUVRIER"})
+    @JsonView(UtilisateurView.class)
     public List<Utilisateur> liste(){
         return utilisateurDao.findAll();
     }
 
     @GetMapping("/utilisateur/{id}")
+    @Secured({"ROLE_ADMIN", "ROLE_OUVRIER"})
+    @JsonView(UtilisateurView.class)
     public ResponseEntity<Utilisateur> get(@PathVariable int id){
         Optional<Utilisateur> optUtilisateur = utilisateurDao.findById(id);
 
         return optUtilisateur.map(utilisateur -> new ResponseEntity<>(utilisateur, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @DeleteMapping("/utilisateur/{id}")
+    @DeleteMapping("/admin/utilisateur/{id}")
+    @Secured({"ROLE_ADMIN"})
     public ResponseEntity<Utilisateur> delete(@PathVariable int id) {
         Optional<Utilisateur> optUtilisateur = utilisateurDao.findById(id);
 
@@ -81,13 +90,15 @@ public class UtilisateurController {
     }
 
     @PostMapping("/admin/utilisateur/")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<Utilisateur> create(@RequestBody @Valid Utilisateur utilisateur) {
         utilisateur.setId(null);
         utilisateurDao.save(utilisateur);
         return new ResponseEntity<>(utilisateur, HttpStatus.OK);
     }
 
-    @PutMapping("/utilisateur/{id}")
+    @PutMapping("/admin/utilisateur/{id}")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<Utilisateur> update(@RequestBody @Valid Utilisateur utilisateur, @PathVariable int id) {
         Optional<Utilisateur> optUtilisateur = utilisateurDao.findById(id);
 

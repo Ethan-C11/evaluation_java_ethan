@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,19 +17,22 @@ public class RoleController {
     @Autowired
     RoleDao roleDao;
 
-    @GetMapping("/role/list")
+    @GetMapping("/admin/role/list")
+    @Secured("ROLE_ADMIN")
     public List<Role> liste(){
         return roleDao.findAll();
     }
 
-    @GetMapping("/role/{id}")
+    @GetMapping("/admin/role/{id}")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<Role> get(@PathVariable int id){
         Optional<Role> optRole = roleDao.findById(id);
 
         return optRole.map(role -> new ResponseEntity<>(role, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @DeleteMapping("/role/{id}")
+    @DeleteMapping("/admin/role/{id}")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<Role> delete(@PathVariable int id) {
         Optional<Role> optRole = roleDao.findById(id);
 
@@ -40,13 +44,15 @@ public class RoleController {
     }
 
     @PostMapping("/admin/role/")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<Role> create(@RequestBody @Valid Role role) {
         role.setId(null);
         roleDao.save(role);
         return new ResponseEntity<>(role, HttpStatus.OK);
     }
 
-    @PutMapping("/role/{id}")
+    @PutMapping("/admin/role/{id}")
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<Role> update(@RequestBody @Valid Role role, @PathVariable int id) {
         Optional<Role> optRole = roleDao.findById(id);
 

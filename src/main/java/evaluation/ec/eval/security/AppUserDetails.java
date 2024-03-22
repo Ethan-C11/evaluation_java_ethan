@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 
 public class AppUserDetails implements UserDetails {
 
@@ -22,7 +23,10 @@ public class AppUserDetails implements UserDetails {
         if(user.getRole().isAdmin()) {
             return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"));
         }
+        if(Objects.equals(user.getRole().getNom(), "Ouvrier")){
+            return List.of(new SimpleGrantedAuthority("ROLE_OUVRIER"));
 
+        }
         return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
