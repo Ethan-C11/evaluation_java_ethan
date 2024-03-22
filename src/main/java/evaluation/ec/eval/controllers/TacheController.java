@@ -36,7 +36,7 @@ public class TacheController {
         return optTache.map(tache -> new ResponseEntity<>(tache, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @DeleteMapping("/tache/{id}")
+    @DeleteMapping("/admin/tache/{id}")
     @Secured({"ROLE_ADMIN", "ROLE_OUVRIER"})
     @JsonView(TacheView.class)
     public ResponseEntity<Tache> delete(@PathVariable int id) {

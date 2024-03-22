@@ -29,7 +29,7 @@ public class Operation {
     @ManyToOne
     @JsonView(OperationView.class)
     protected Chantier chantier;
-    
+
     @JsonView({ChantierView.class, OperationView.class})
     protected Date date;
 
