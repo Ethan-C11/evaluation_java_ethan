@@ -1,3 +1,9 @@
+Les utilisateurs sont :
+- "Client Joe"
+- "Admin Jack"
+- "Ouvrier Bob"
+- "Ouvrier Jane"
+
 Le mot de passe de tous les utilisateurs est : **passpass**
 
 ----------------------------------------------------------

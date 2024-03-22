@@ -10,7 +10,7 @@ VALUES ("Client Joe",
         ("Ouvrier Bob",
         "$2y$10$LX9BDGlK1jLIvKpc1gv4Z.bfDbrJcfEpOMjOctGC3UDsaBVDd346q",
         2),
-       ("Ouvrier Bob Junior",
+       ("Ouvrier Jane",
         "$2y$10$LX9BDGlK1jLIvKpc1gv4Z.bfDbrJcfEpOMjOctGC3UDsaBVDd346q",
         2);
 
